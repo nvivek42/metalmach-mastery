@@ -3,11 +3,17 @@
 import { motion, HTMLMotionProps } from 'framer-motion';
 import { ArrowRightIcon, CogIcon, ShieldCheckIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import { FC, ComponentType } from 'react';
-import { IconProps } from '@heroicons/react/24/outline';
+
+// Define our own IconProps type
+type HeroIconProps = {
+  className?: string;
+  'aria-hidden'?: boolean;
+  [key: string]: any;
+};
 
 // Define types for our features
 interface Feature {
-  icon: ComponentType<IconProps>;
+  icon: ComponentType<HeroIconProps>;
   title: string;
   // description: string;
   benefits: string[];
@@ -16,7 +22,7 @@ interface Feature {
 const Features: FC = () => {
   const features: Feature[] = [
     {
-      icon: CogIcon as ComponentType<IconProps>,
+      icon: CogIcon as ComponentType<HeroIconProps>,
       title: "Advanced Infrastructure",
       // description: "State-of-the-art die casting and machining facilities equipped with the latest technology for precision manufacturing.",
       benefits: [
@@ -27,7 +33,7 @@ const Features: FC = () => {
       ]
     },
     {
-      icon: ShieldCheckIcon as ComponentType<IconProps>,
+      icon: ShieldCheckIcon as ComponentType<HeroIconProps>,
       title: "Quality Assurance",
       // description: "ISO 9001:2015 certified manufacturing processes ensuring consistent quality and reliability.",
       benefits: [
@@ -38,7 +44,7 @@ const Features: FC = () => {
       ]
     },
     {
-      icon: UserGroupIcon as ComponentType<IconProps>,
+      icon: UserGroupIcon as ComponentType<HeroIconProps>,
       title: "Expert Team",
       // description: "Skilled professionals with decades of experience in metal manufacturing and engineering.",
       benefits: [
@@ -73,7 +79,7 @@ const Features: FC = () => {
   };
 
   const MotionDiv = motion.div as ComponentType<HTMLMotionProps<"div">>;
-  const Icon = ArrowRightIcon as ComponentType<IconProps>;
+  const Icon = ArrowRightIcon as ComponentType<HeroIconProps>;
 
   return (
     <section className="py-24 bg-[#f2f2f2]">
