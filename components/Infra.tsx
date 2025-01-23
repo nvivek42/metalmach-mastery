@@ -2,22 +2,28 @@
 import { motion, AnimatePresence, HTMLMotionProps } from 'framer-motion'
 import Image from 'next/image'
 import { useState, FC, ComponentType } from 'react'
-import { IconProps } from '@heroicons/react/24/solid'
+import { SVGProps } from 'react'
 import { 
   BeakerIcon, 
   CogIcon, 
   WrenchScrewdriverIcon, 
   BuildingOfficeIcon,
   ChartBarIcon,
-  ClockIcon,
   ScaleIcon,
+  ClockIcon,
   CheckCircleIcon,
   ChevronDownIcon,
   UserGroupIcon
 } from '@heroicons/react/24/solid'
 
+// Define HeroIcon type
+type HeroIconProps = SVGProps<SVGSVGElement> & {
+  title?: string;
+  titleId?: string;
+};
+
 interface IconWrapperProps {
-  Icon: ComponentType<IconProps>;
+  Icon: ComponentType<HeroIconProps>;
   className?: string;
 }
 
@@ -29,21 +35,21 @@ interface StatItem {
   label: string;
   value: string;
   unit: string;
-  icon: ComponentType<IconProps>;
+  icon: ComponentType<HeroIconProps>;
 }
 
 // Stats data
 const stats: StatItem[] = [
-  { label: "Monthly Output", value: "500+", unit: "Tons", icon: ChartBarIcon },
-  { label: "Melting Capacity", value: "800", unit: "Kg/hr", icon: ScaleIcon },
-  { label: "Quality Tests", value: "100%", unit: "Pass Rate", icon: CheckCircleIcon },
-  { label: "Production Time", value: "24/7", unit: "Support", icon: ClockIcon },
+  { label: "Monthly Output", value: "500+", unit: "Tons", icon: ChartBarIcon as ComponentType<HeroIconProps> },
+  { label: "Melting Capacity", value: "800", unit: "Kg/hr", icon: ScaleIcon as ComponentType<HeroIconProps> },
+  { label: "Production Time", value: "24/7", unit: "Hours", icon: ClockIcon as ComponentType<HeroIconProps> },
+  { label: "Quality Score", value: "99.9", unit: "%", icon: CheckCircleIcon as ComponentType<HeroIconProps> }
 ];
 
 interface CapacityItem {
   label: string;
   percentage: number;
-  icon: ComponentType<IconProps>;
+  icon: ComponentType<HeroIconProps>;
   description: string;
   trend: string;
   color: string;
@@ -54,7 +60,7 @@ const capacityData: CapacityItem[] = [
   { 
     label: "Foundry Utilization",
     percentage: 85,
-    icon: BuildingOfficeIcon,
+    icon: BuildingOfficeIcon as ComponentType<HeroIconProps>,
     description: "Maximum utilization of foundry equipment and resources",
     trend: "+5% from last quarter",
     color: "from-blue-500 to-blue-600"
@@ -62,7 +68,7 @@ const capacityData: CapacityItem[] = [
   { 
     label: "Quality Compliance",
     percentage: 99,
-    icon: CheckCircleIcon,
+    icon: CheckCircleIcon as ComponentType<HeroIconProps>,
     description: "Adherence to international quality standards",
     trend: "Consistently above 98%",
     color: "from-green-500 to-green-600"
@@ -70,7 +76,7 @@ const capacityData: CapacityItem[] = [
   { 
     label: "Production Efficiency",
     percentage: 90,
-    icon: CogIcon,
+    icon: CogIcon as ComponentType<HeroIconProps>,
     description: "Optimal production rate with minimal waste",
     trend: "+8% year over year",
     color: "from-purple-500 to-purple-600"
@@ -78,7 +84,7 @@ const capacityData: CapacityItem[] = [
   { 
     label: "On-time Delivery",
     percentage: 95,
-    icon: ClockIcon,
+    icon: ClockIcon as ComponentType<HeroIconProps>,
     description: "Reliable and punctual delivery performance",
     trend: "Industry-leading rate",
     color: "from-orange-500 to-orange-600"
@@ -120,7 +126,7 @@ interface SectionImage {
 
 interface Section {
   title: string;
-  icon: ComponentType<IconProps>;
+  icon: ComponentType<HeroIconProps>;
   description: string;
   items: SectionItem[];
   images?: SectionImage[];
@@ -132,7 +138,7 @@ const Infrastructure: FC = () => {
   const sections: Section[] = [
     {
       title: "Foundry Infrastructure",
-      icon: BuildingOfficeIcon,
+      icon: BuildingOfficeIcon as ComponentType<HeroIconProps>,
       description: "State-of-the-art foundry equipped with advanced melting and casting facilities",
       items: [
         {
@@ -179,7 +185,7 @@ const Infrastructure: FC = () => {
     },
     {
       title: "Quality Infrastructure",
-      icon: BeakerIcon,
+      icon: BeakerIcon as ComponentType<HeroIconProps>,
       description: "Comprehensive quality control lab with advanced testing equipment",
       items: [
         {
@@ -204,7 +210,7 @@ const Infrastructure: FC = () => {
     },
     {
       title: "Post Casting Process Setup",
-      icon: CogIcon,
+      icon: CogIcon as ComponentType<HeroIconProps>,
       description: "Complete post-casting treatment and finishing facilities",
       items: [
         {
@@ -229,7 +235,7 @@ const Infrastructure: FC = () => {
     },
     {
       title: "Machining Setup",
-      icon: WrenchScrewdriverIcon,
+      icon: WrenchScrewdriverIcon as ComponentType<HeroIconProps>,
       description: "Versatile machining capabilities with high precision equipment",
       items: [
         {
