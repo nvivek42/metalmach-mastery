@@ -1,7 +1,7 @@
 'use client'
 import { motion, AnimatePresence, HTMLMotionProps } from 'framer-motion'
 import Image from 'next/image'
-import { useState, FC, ComponentType } from 'react'
+import { useState, FC, ComponentType, useEffect } from 'react'
 import { SVGProps } from 'react'
 import { 
   BeakerIcon, 
@@ -133,7 +133,24 @@ interface Section {
 }
 
 const Infrastructure: FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [showFullContent, setShowFullContent] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading state
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50">
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="animate-spin rounded-full border-primary border-t-transparent h-8 w-8 border-2"></div>
+        </div>
+      </div>
+    );
+  }
 
   const sections: Section[] = [
     {
@@ -302,7 +319,12 @@ const Infrastructure: FC = () => {
   const MotionDiv = motion.div as ComponentType<HTMLMotionProps<"div">>;
 
   return (
-    <div className="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="py-20 bg-gradient-to-b from-gray-50 to-gray-100"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header - Always visible */}
         <MotionDiv
@@ -667,7 +689,7 @@ const Infrastructure: FC = () => {
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

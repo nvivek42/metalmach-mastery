@@ -11,10 +11,10 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Services />
-      <Infra />
-      <Industries />
       <Features />
+      <Services />
+      <Industries />
+      <Infra />
       <About />
       <Contact />
       <CTA />
