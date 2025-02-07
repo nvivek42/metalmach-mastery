@@ -1,0 +1,69 @@
+/* Brushed Metal Texture Background */
+.brushed-metal-bg {
+  background: linear-gradient(
+    135deg, 
+    rgba(200, 200, 200, 0.1) 0%, 
+    rgba(220, 220, 220, 0.2) 100%
+  );
+  background-image: 
+    linear-gradient(
+      45deg, 
+      rgba(255, 255, 255, 0.1) 25%, 
+      transparent 25%, 
+      transparent 50%, 
+      rgba(255, 255, 255, 0.1) 50%, 
+      rgba(255, 255, 255, 0.1) 75%, 
+      transparent 75%, 
+      transparent 100%
+    );
+  background-size: 40px 40px;
+  background-color: #e0e0e0;
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Metallic Number Styling */
+.metallic-number {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  
+  /* Metallic color palette with reflective effect */
+  background: linear-gradient(
+    45deg, 
+    #4a4a4a, 
+    #6a6a6a, 
+    #3a3a3a, 
+    #5a5a5a
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  
+  /* Reflective overlay */
+  position: relative;
+  z-index: 1;
+}
+
+.metallic-number::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.3) 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  opacity: 0.5;
+  transform: scale(1.02) translate(-2px, -2px);
+}

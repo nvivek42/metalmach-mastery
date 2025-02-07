@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* Typewriter Animation */
+@keyframes typewriter {
+  from { 
+    width: 0;
+    opacity: 0;
+  }
+  to { 
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes blinkTextCursor {
+  0% { border-right-color: rgba(255,255,255,0.75); }
+  50% { border-right-color: transparent; }
+  100% { border-right-color: rgba(255,255,255,0.75); }
+}
+
+.typewriter-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 10px;
+  border-right: 3px solid rgba(255,255,255,0.75);
+  font-family: 'Inter', sans-serif;
+  color: white;
+  opacity: 0;
+  animation: 
+    typewriter 2s steps(20) forwards,
+    blinkTextCursor 750ms steps(20) infinite;
+}
+
+.typewriter-text.no-cursor {
+  border-right: none;
+  animation: 
+    typewriter 2s steps(20) forwards;
+}
+
+/* Staggered Typewriter Animations */
+.typewriter-1 { 
+  animation-delay: 0s; 
+}
+.typewriter-2 { 
+  animation-delay: 2s; 
+}
+.typewriter-3 { 
+  animation-delay: 4s; 
+}
+
+/* Modern Gradient Text */
+.gradient-text {
+  background: linear-gradient(
+    45deg, 
+    #ffffff, 
+    #f0f0f0, 
+    #e0e0e0
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Hover Effects */
+.hero-cta {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent
+  );
+  transition: all 0.5s ease;
+}
+
+.hero-cta:hover::before {
+  left: 100%;
+}
+
+.hero-cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Enhanced Fade In Animation for Additional Content */
+@keyframes smoothFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.smooth-fade-in {
+  opacity: 0;
+  animation: 
+    smoothFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 1s forwards;
+}
+
+.smooth-fade-in-buttons {
+  opacity: 0;
+  animation: 
+    smoothFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+}
+
+/* Stagger Animation for Buttons */
+@keyframes staggerButtonsIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  70% {
+    opacity: 0.7;
+    transform: scale(1.02) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.stagger-button-1 {
+  animation: 
+    staggerButtonsIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
+  opacity: 0;
+}
+
+.stagger-button-2 {
+  animation: 
+    staggerButtonsIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
+  opacity: 0;
+}
+
+/* Hero Background Image */
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Aluminum Texture Background */
+/* .aluminum-hero-bg {
+  position: relative;
+  background: linear-gradient(
+    135deg, 
+    rgba(13, 99, 169, 0.657) 0%, 
+    rgba(40, 130, 221, 0.2) 100%
+  );
+  overflow: hidden;
+} */
+
+/* .aluminum-hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(
+      45deg, 
+      rgba(0, 120, 225, 0.835) 25%, 
+      transparent 25%, 
+      transparent 50%, 
+      rgba(8, 84, 156, 0.434) 50%, 
+      rgba(3, 36, 63, 0.469) 75%, 
+      transparent 75%, 
+      transparent 100%
+    );
+  background-size: 40px 40px;
+  opacity: 0.5;
+  pointer-events: none;
+} */
+/* 
+.aluminum-hero-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(
+      circle at top right, 
+      rgba(255, 255, 255, 0.2), 
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom left, 
+      rgba(0, 0, 0, 0.1), 
+      transparent 50%
+    );
+  opacity: 0.3;
+  pointer-events: none;
+} */
+
+/* Animated Metallic Overlay */
+@keyframes metalReflection {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.metallic-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent
+  );
+  animation: metalReflection 5s infinite linear;
+  pointer-events: none;
+}
+
+/* Hero Background Image */
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
