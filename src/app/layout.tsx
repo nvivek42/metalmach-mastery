@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Chakra_Petch } from "next/font/google";
-import Header from "@/components/Header";
 import "./globals.css";
-import "@/components/Services.css";
-import "@/components/Clients.css";
 import HomePage from "@/components/HomePage";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,16 +15,10 @@ export const metadata: Metadata = {
   description: "MMPL",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${inter.className} ${chakraPetch.className}`}>
-        <Header />
-        {children}
         <HomePage />
       </body>
     </html>
