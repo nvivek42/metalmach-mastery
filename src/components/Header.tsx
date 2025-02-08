@@ -28,8 +28,8 @@ const Header = () => {
           <Image 
             src="/image/logo1.jpg" 
             alt="Metalmach Logo" 
-            width={70} 
-            height={70} 
+            width={40} 
+            height={40} 
             className="transition-transform duration-300 hover:rotate-6"
           />
           <span className={`site-title text-2xl font-bold ${chakraPetch.className}`}>

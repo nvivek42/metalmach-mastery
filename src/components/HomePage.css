@@ -42,12 +42,12 @@
 .typewriter-1 { 
   animation-delay: 0s; 
 }
-.typewriter-2 { 
+/* .typewriter-2 { 
   animation-delay: 2s; 
 }
 .typewriter-3 { 
   animation-delay: 4s; 
-}
+} */
 
 /* Modern Gradient Text */
 .gradient-text {
