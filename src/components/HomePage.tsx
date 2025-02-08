@@ -9,7 +9,7 @@ import Services from './Services';
 import WhyChooseUs from './WhyChooseUs';
 import OurMarkets from './OurMarkets';
 import Clients from './Clients';
-import {FOOTER_LINKS, SITE_TITLE, CONTACT_INFO } from '@/config/site';
+// import {FOOTER_LINKS, SITE_TITLE, CONTACT_INFO } from '@/config/site';
 import './HomePage.css';
 import React, { useState, useEffect } from 'react';
 
