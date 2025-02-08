@@ -3,8 +3,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { Chakra_Petch } from 'next/font/google';
+
 import { NAV_LINKS, SITE_TITLE } from '@/config/site';
 import './Header.css';
+
+const chakraPetch = Chakra_Petch({
+  weight: ['400', '700'],
+  subsets: ['latin']
+});
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +32,7 @@ const Header = () => {
             height={70} 
             className="transition-transform duration-300 hover:rotate-6"
           />
-          <span className="site-title">
+          <span className={`site-title text-2xl font-bold ${chakraPetch.className}`}>
             {SITE_TITLE}
           </span>
         </Link>
@@ -69,8 +76,8 @@ const Header = () => {
           transition-all duration-300 ease-in-out
         `}>
           <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 p-4 md:p-0">
-            {NAV_LINKS.map((link) => (
-              <li key={link.key}>
+            {NAV_LINKS.map((link, index) => (
+              <li key={link.href}>
                 <Link 
                   href={link.href} 
                   className="nav-link"
