@@ -1,7 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
 import { CogIcon, CubeIcon, BeakerIcon } from '@heroicons/react/24/outline'
+import { Roboto } from 'next/font/google'
 
+const roboto = Roboto({ weight: ['400'], subsets: ['latin'] })
 export default function Services() {
   const services = [
     {
@@ -22,10 +24,10 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section className="w-full bg-white px-20 py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <div className="text-3xl font-bold text-gray-900 sm:text-4xl font-times new roman">
+          <div className={`text-3xl font-bold sm:text-3xl lg:text-4xl text-gray-900 tracking-tight ${roboto.className}`}>
             What We Do
           </div>
         </div>

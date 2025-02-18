@@ -1,60 +1,77 @@
+"use client"
+
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Inter } from 'next/font/google';
+import './Hero.css';
+import { useEffect, useRef } from "react"
+
+
+const inter = Inter({
+  weight: ['400', '700'],
+  subsets: ['latin']
+});
+
 export default function Hero() {
+  const heroRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const scrolled = window.scrollY
+        heroRef.current.style.transform = `translateY(${scrolled * 0.5}px)`
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Video Background */}
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Background Image */}
+      <div 
+      ref={heroRef}
+       className="absolute inset-0 animate-subtle-zoom"
+       style={{
+         backgroundImage: `url('/image/background.jpg')`,
+         backgroundSize: "cover",
+         backgroundPosition: "top center"
+       }}
       >
-        <source src="/img/diecast.mp4" type="video/mp4" />
-      </video>
+        <div className="absolute inset-0 animate-water-reflection" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
+      </div>
 
-      {/* Enhanced gradient overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto lg:ml-[10%]">
-          <h1 className="mb-6">
-            <span className="block text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] 
-              font-bold text-white leading-[1.1] mb-4 tracking-tight font-serif">
-              Precision Die Casting
-              <span className="block mt-2 text-primary-400">
-                Excellence
-              </span>
-            </span>
-            <span className="block text-[1.75rem] md:text-[2rem] lg:text-[2.25rem] 
-              font-medium text-gray-200 leading-tight font-candara">
-              Engineering the Future of Manufacturing
-            </span>
+      {/* Text Column */}
+      <div className="px-4 md:px-8 lg:px-12 py-16 text-white relative z-10 text-left max-w-[1400px] w-full">
+        <div className="space-y-6 ml-0 md:ml-4 lg:ml-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-['Outfit'] mb-6 py-10 leading-tight">
+             <div>
+              Built on Precision,
+            <br />
+              Driven by Innovation.
+            </div>            
           </h1>
-          
-          <p className="text-[1.125rem] md:text-[1.25rem] lg:text-[1.375rem] 
-            text-gray-300 mt-8 mb-12 max-w-2xl font-light leading-relaxed">
-            Delivering world-class die casting solutions with unmatched precision, 
-            quality, and innovation for industries worldwide.
-          </p>
 
-          <div className="flex gap-6">
-            <a
-              href="/contact"
-              className="inline-block bg-primary-500 text-white px-8 py-4 
-                text-lg font-medium rounded-md hover:bg-primary-600 
-                transition-all duration-300 hover:scale-105"
+          <p className="text-xl md:text-2xl mb-8  font-light tracking-wide text-white smooth-fade-in">
+            <br/><br/><br/>            
+            Transforming Complex Manufacturing Challenges into Innovative Solutions
+          </p>
+          <div className="space-x-4 smooth-fade-in-buttons">
+            <Link
+              href="/Services"
+              className="hero-cta inline-block bg-[#CD1C18] text-white px-8 py-3  rounded-full text-lg transition-all stagger-button-1"
             >
-              Get Started
-            </a>
-            <a
-              href="/capabilities"
-              className="inline-block border-2 border-white text-white px-8 py-4 
-                text-lg font-medium rounded-md hover:bg-white/10
-                transition-all duration-300"
+              Explore Services
+            </Link>
+            <Link
+              href="/CTA"
+              className="hero-cta inline-block border-2 border-white text-white px-8 py-2 rounded-full text-lg transition-all stagger-button-2"
             >
-              Our Capabilities
-            </a>
+              Contact Us
+            </Link>
           </div>
         </div>
       </div>

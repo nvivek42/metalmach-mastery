@@ -2,35 +2,26 @@
 
 import Image from 'next/image' // Import Next.js Image component
 import { useEffect, useState } from 'react'
+import { Roboto } from 'next/font/google'
+
+const roboto = Roboto({ weight: ['400'], subsets: ['latin'] })
 
 export default function Industries() {
   const [isLoading, setIsLoading] = useState(true)
 
   return (
-    <section className="py-20">
+    <section className="w-full bg-white px-20 py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <div className="max-w-3xl">
-          {/* Title with Separator Line */}
-          <div className="relative mb-6">
-            <div className="flex items-center">
-              <div className="w-16 h-[2px] bg-primary-500 mr-6"></div>
-              <h2 className="text-4xl font-bold text-black align-middle font-times new roman">Our Markets</h2>
-            </div>
-          </div>
 
-          {/* Subtitle */}
-          {/* <p className="text-lg text-black-300 leading-relaxed">
-            MetalMach manufactures components for high-heat, high-wear, and high-corrosion 
-            applications across various industries. Companies worldwide trust us to understand 
-            the unique demands of each market we serve.
-          </p> */}
+        <div className="text-center">
+          <div className={`text-3xl font-bold sm:text-3xl lg:text-4xl text-gray-900 tracking-tight ${roboto.className}`}>
+            Our Markets
+          </div>
         </div>
 
-        {/* Industries Grid */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {industries.map((industry) => (
-            <div 
+            <div
               key={industry.title}
               className="group relative overflow-hidden rounded-lg cursor-pointer"
             >
@@ -49,7 +40,7 @@ export default function Industries() {
                   quality={75} // Adjust quality for better performance
                 />
               </div>
-              
+
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
@@ -120,7 +111,7 @@ const industries = [
     image: '/img/industries/construction.jpg',
     priority: true, // Load first
     blurDataURL: 'data:image/jpeg;base64,/9j...' // Add base64 blur image
-    
+
   },
   {
     title: 'Oil & Gas',

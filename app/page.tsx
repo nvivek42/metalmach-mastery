@@ -3,20 +3,20 @@ import Services from '../components/Services'
 import Industries from '../components/Industries'
 import Features from '../components/Features'
 import Infra from '../components/Infra'
-import About from '../components/About'
-import Contact from '../components/Contact'
 import CTA from '../components/CTA'
+import Metrics from '../components/Metrics'
+import About from '@/components/About'
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Features />
+      <About />
       <Services />
       <Industries />
       <Infra />
-      <About />
-      <Contact />
+      <Metrics />
+      <Features />      
       <CTA />
     </main>
   )

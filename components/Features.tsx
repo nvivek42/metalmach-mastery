@@ -3,7 +3,12 @@
 import { motion, HTMLMotionProps } from 'framer-motion';
 import { ArrowRightIcon, CogIcon, ShieldCheckIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import { FC, ComponentType } from 'react';
+import { Roboto } from 'next/font/google'
 
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin']
+})
 // Define our own IconProps type
 type HeroIconProps = {
   className?: string;
@@ -56,24 +61,16 @@ const Features: FC = () => {
   ];
 
   return (
-    <section className="relative py-16 bg-white overflow-hidden">
-      {/* Subtle Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:14px_24px]"></div>
-      
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="container relative mx-auto px-4 lg:px-6"
-      >
+    <section className="w-full bg-white px-20 ">
+      <div className="container mx-auto">
         <div className="text-center mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl font-bold text-gray-900"
+            className={`text-3xl font-bold sm:text-3xl lg:text-4xl text-gray-900 tracking-tight ${roboto.className} `}
           >
-            Why Choose MetalMach?
+            Why Choose MMPL?
           </motion.h2>
           <motion.div 
             initial={{ scaleX: 0 }}
@@ -135,7 +132,7 @@ const Features: FC = () => {
             );
           })}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
